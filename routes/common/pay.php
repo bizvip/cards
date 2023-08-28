@@ -15,9 +15,6 @@ Route::group(['prefix' => 'pay', 'namespace' => 'Pay', 'middleware' => ['dujiaok
     // 支付宝
     Route::get('alipay/{payway}/{orderSN}', 'AlipayController@gateway');
     Route::post('alipay/notify_url', 'AlipayController@notifyUrl');
-    // USDT 掃碼
-    Route::get('bill-tron/tronlink/{orderSN}', 'USDTController@gateway');
-    Route::post('bill-tron/notify_url', 'USDTController@notifyUrl');
     // 微信
     Route::get('wepay/{payway}/{orderSN}', 'WepayController@gateway');
     Route::post('wepay/notify_url', 'WepayController@notifyUrl');

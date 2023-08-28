@@ -6,10 +6,10 @@
  * @copyright assimon<ashang@utf8.hk>
  * @link      http://utf8.hk/
  */
+
 use Illuminate\Support\Facades\Route;
 
-
-Route::group(['middleware' => ['dujiaoka.boot'],'namespace' => 'Home'], function () {
+Route::group(['middleware' => ['dujiaoka.boot'], 'namespace' => 'Home'], function () {
     // 首页
     Route::get('/', 'HomeController@index');
     // 极验效验
@@ -34,10 +34,14 @@ Route::group(['middleware' => ['dujiaoka.boot'],'namespace' => 'Home'], function
     Route::post('search-order-by-browser', 'OrderController@searchOrderByBrowser');
 });
 
-Route::group(['middleware' => ['install.check'],'namespace' => 'Home'], function () {
+Route::group(['middleware' => ['install.check'], 'namespace' => 'Home'], function () {
     // 安装
     Route::get('install', 'HomeController@install');
     // 执行安装
     Route::post('do-install', 'HomeController@doInstall');
 });
 
+
+// USDT 掃碼
+Route::get('bill-tron/tronlink/{orderSN}', 'USDTController@gateway');
+Route::post('bill-tron/notify_url', 'USDTController@notifyUrl');
